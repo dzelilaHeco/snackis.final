@@ -1,0 +1,51 @@
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Infrastructure.deps.json
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Infrastructure.runtimeconfig.json
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Infrastructure.dll
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Infrastructure.pdb
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Domain.dll
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Domain.pdb
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.AssemblyInfo.cs
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\obj\Debug\net9.0\Snackis..178AB5FF.Up2Date
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.dll
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\obj\Debug\net9.0\refint\Snackis.Infrastructure.dll
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.pdb
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.genruntimeconfig.cache
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Infrastructure\obj\Debug\net9.0\ref\Snackis.Infrastructure.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Infrastructure.deps.json
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Infrastructure.runtimeconfig.json
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Infrastructure.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Infrastructure.pdb
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Domain.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Domain.pdb
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.AssemblyInfo.cs
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis..178AB5FF.Up2Date
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\obj\Debug\net9.0\refint\Snackis.Infrastructure.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.pdb
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.genruntimeconfig.cache
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Infrastructure\obj\Debug\net9.0\ref\Snackis.Infrastructure.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Infrastructure.deps.json
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Infrastructure.runtimeconfig.json
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Infrastructure.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Infrastructure.pdb
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Domain.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\bin\Debug\net9.0\Snackis.Domain.pdb
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.AssemblyInfo.cs
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis..178AB5FF.Up2Date
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\obj\Debug\net9.0\refint\Snackis.Infrastructure.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.pdb
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\obj\Debug\net9.0\Snackis.Infrastructure.genruntimeconfig.cache
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Infrastructure\obj\Debug\net9.0\ref\Snackis.Infrastructure.dll
