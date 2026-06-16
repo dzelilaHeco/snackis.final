@@ -1,0 +1,36 @@
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Domain\bin\Debug\net9.0\Snackis.Domain.deps.json
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Domain\bin\Debug\net9.0\Snackis.Domain.dll
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Domain\bin\Debug\net9.0\Snackis.Domain.pdb
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.AssemblyInfoInputs.cache
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.AssemblyInfo.cs
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.csproj.CoreCompileInputs.cache
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.dll
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Domain\obj\Debug\net9.0\refint\Snackis.Domain.dll
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.pdb
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Domain\obj\Debug\net9.0\ref\Snackis.Domain.dll
+C:\Users\dzeli\OneDrive\Documents\SB2\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.csproj.AssemblyReference.cache
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Domain\bin\Debug\net9.0\Snackis.Domain.deps.json
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Domain\bin\Debug\net9.0\Snackis.Domain.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Domain\bin\Debug\net9.0\Snackis.Domain.pdb
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.csproj.AssemblyReference.cache
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.AssemblyInfoInputs.cache
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.AssemblyInfo.cs
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.csproj.CoreCompileInputs.cache
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Domain\obj\Debug\net9.0\refint\Snackis.Domain.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.pdb
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy\Snackis.Domain\obj\Debug\net9.0\ref\Snackis.Domain.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Domain\bin\Debug\net9.0\Snackis.Domain.deps.json
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Domain\bin\Debug\net9.0\Snackis.Domain.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Domain\bin\Debug\net9.0\Snackis.Domain.pdb
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.csproj.AssemblyReference.cache
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.AssemblyInfoInputs.cache
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.AssemblyInfo.cs
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.csproj.CoreCompileInputs.cache
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Domain\obj\Debug\net9.0\refint\Snackis.Domain.dll
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Domain\obj\Debug\net9.0\Snackis.Domain.pdb
+C:\Users\dzeli\OneDrive\Documents\SB2 - Copy - Copy\Snackis.Domain\obj\Debug\net9.0\ref\Snackis.Domain.dll
