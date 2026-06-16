@@ -1,0 +1,70 @@
+﻿@page "/"
+@using Snackis.Application.Interfaces
+@using Snackis.Domain.Entities
+@inject ITopicService TopicService
+@inject NavigationManager Navigation
+
+<h1>Forum</h1>
+
+@if (topics == null)
+{
+    <p>Laddar...</p>
+}
+else
+{
+    @foreach (var topic in topics)
+    {
+        <div class="card p-3 mb-3">
+
+            <h3>@topic.Name</h3>
+
+            <small>
+                Kategori: @topic.Category?.Name
+            </small>
+
+            <p>
+                @if (topic.Posts != null && topic.Posts.Any())
+                {
+                    var latest = topic.Posts
+                    .OrderByDescending(p => p.CreatedAt)
+                    .FirstOrDefault();
+
+                    <span>
+                        Senaste: @latest?.Text
+                        <br />
+                        Av: @latest?.User?.UserName
+                    </span>
+                }
+                else
+                {
+                    <span>Inga inlägg ännu</span>
+                }
+            </p>
+
+            <small>
+                Antal inlägg: @topic.Posts?.Count
+            </small>
+
+            <br />
+
+            <a href="/topic/@topic.Id">
+                Öppna tråd
+            </a>
+
+        </div>
+    }
+}
+
+@code {
+    private List<Topic>? topics;
+
+    protected override async Task OnInitializedAsync()
+    {
+        topics = await TopicService.GetThreadsAsync();
+    }
+
+    private void OpenTopic(int id)
+    {
+        Navigation.NavigateTo($"/category/{id}");
+    }
+}

@@ -1,0 +1,117 @@
+﻿@page "/admin"
+@inject ICategoryService CategoryService
+@inject ITopicService TopicService
+@inject IReportService ReportService
+@rendermode InteractiveServer
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Identity
+@using Snackis.Application.Interfaces
+@using Snackis.Domain.Entities
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject UserManager<MyUser> UserManager
+@inject NavigationManager Navigation
+
+@if (!isLoaded)
+{
+    <p>Laddar...</p>
+}
+else if (!isAdmin)
+{
+    <h3>Du saknar behörighet.</h3>
+}
+else
+{
+    <h1>Adminpanel</h1>
+    <hr />
+    <h3>Kategorier</h3>
+    <ul>
+        @foreach (var category in Categories)
+        {
+            <li>@category.Name</li>
+        }
+    </ul>
+    <h4>Lägg till kategori</h4>
+    <EditForm Model="@NewCategory" OnSubmit="@CategoryForm" FormName="CreateCategory">
+
+        <DataAnnotationsValidator />
+        <label for="Name">Namn</label>
+        <InputText @bind-Value="NewCategory.Name" id="name"></InputText><br />
+
+        <button type="submit">Skicka</button>
+
+        <ValidationSummary></ValidationSummary>
+
+    </EditForm>
+    <hr />
+    //---------------------
+    <h3>Ämne</h3>
+    <ul>
+        @foreach (var topic in Topics)
+        {
+            <li>@topic.Name</li>
+        }
+    </ul>
+    <h4>Lägg till ämne</h4>
+
+    <EditForm Model="@NewTopic" OnSubmit="@TopicForm" FormName="CreateTopic">
+
+        <DataAnnotationsValidator />
+
+        <label>Kategori</label>
+        <InputSelect @bind-Value="NewTopic.CategoryId">
+
+            <option value="0">Välj kategori</option>
+
+            @foreach (var category in Categories)
+            {
+                <option value="@category.Id">
+                    @category.Name
+                </option>
+            }
+
+        </InputSelect>
+
+        <br />
+
+        <label for="topicName">Namn</label>
+        <InputText @bind-Value="NewTopic.Name" id="topicName"></InputText>
+
+        <br />
+
+        <button type="submit">Skicka</button>
+
+        <ValidationSummary />
+
+    </EditForm>
+    <hr />
+    //---------------------------
+    <hr />
+    <h3>Rapporter</h3>
+
+    @if (Reports.Count == 0)
+    {
+        <p>Inga rapporter.</p>
+    }
+    else
+    {
+        @foreach (var report in Reports)
+        {
+            <div class="card p-2 mb-2">
+
+                <p><strong>Anledning:</strong> @report.Reason</p>
+
+                <p><strong>Post:</strong> @report.Post?.Text</p>
+
+                <p><strong>Postad av:</strong> @report.Post?.User?.UserName</p>
+
+                <p><strong>Rapporterad av:</strong> @report.User?.UserName</p>
+
+                <button @onclick="() => HandleReport(report.Id)">
+                    Markera hanterad
+                </button>
+
+            </div>
+        }
+    }
+}

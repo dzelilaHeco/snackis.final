@@ -1,0 +1,35 @@
+﻿@page "/categories"
+@using Snackis.Application.Interfaces
+@using Snackis.Domain.Entities 
+@using Snackis.Application.Services
+
+@inject ICategoryService CategoryService
+@inject ITopicService TopicService
+@inject NavigationManager Navigation
+
+<p>Alla kategorier:</p>
+
+@if (categories.Count == 0)
+{
+    <p>Inga kategorier finns ännu.</p>
+}
+else
+{
+    @foreach (var category in categories)
+    {
+        <div class="card p-3 mb-3">
+            <h3>@category.Name</h3>
+
+            <a href="@($"/category/{category.Id}")"> Öppna </a>
+        </div>
+    }
+}
+@code {
+
+    private List<Category> categories = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        categories = await CategoryService.GetAllAsync();
+    }
+}

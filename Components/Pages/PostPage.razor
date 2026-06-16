@@ -1,0 +1,256 @@
+﻿@page "/topic/{Id:int}"
+@inject IPostService PostService
+@inject ITopicService TopicService
+@inject IReportService ReportService
+@inject ICommentService CommentService
+@inject IPrivateMessageService PrivateMessageService
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject UserManager<MyUser> UserManager
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Identity
+@using Snackis.Application.Interfaces
+@using Snackis.Application.Services
+@using Snackis.Domain.Entities
+@using System.ComponentModel.DataAnnotations
+@rendermode InteractiveServer
+
+<h1>@Topic?.Name</h1>
+
+<hr />
+
+<h3>Skapa inlägg</h3>
+
+<EditForm Model="@NewPost" OnValidSubmit="CreatePost">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <label>Text</label>
+    <InputTextArea @bind-Value="NewPost.Text" />
+    <button type="submit">Posta</button>
+</EditForm>
+
+<hr />
+
+@if (!Posts.Any())
+{
+    <p>Inga inlägg ännu.</p>
+}
+else
+{
+    @foreach (var post in Posts)
+    {
+        <div class="card p-2 mb-2">
+            <div class="d-flex">
+                <img src="@post.User?.Image"
+                     alt="Profilbild"
+                     width="50"
+                     height="50"
+                     style="border-radius:50%; object-fit:cover; margin-right:10px;" />
+                <div>
+                    <p>@post.Text</p>
+                    <small>
+                        Av: @post.User?.UserName
+                        • @post.CreatedAt.ToString("yyyy-MM-dd")
+                    </small>
+                </div>
+            </div>
+
+            <div class="text-end mt-2">
+                <button class="btn btn-sm btn-outline-primary me-2"
+                        @onclick="() => OpenComments(post.Id)">
+                    Kommentera
+                </button>
+                <button class="btn btn-sm btn-outline-danger me-2"
+                        @onclick="() => OpenReport(post.Id)">
+                    Anmäla
+                </button>
+                <button class="btn btn-sm btn-outline-secondary"
+                        @onclick="() => OpenMessage(post.Id, post.UserId)">
+                    Meddelande
+                </button>
+            </div>
+        </div>
+
+        @* Kommentarsfält *@
+        @if (CommentPostId == post.Id)
+        {
+            <div class="mt-2 ms-2">
+                <InputTextArea class="form-control"
+                               @bind-Value="CommentText" />
+                <button class="btn btn-primary mt-2"
+                        @onclick="() => SaveComment(post.Id)">
+                    Skicka kommentar
+                </button>
+            </div>
+        }
+
+        @* Anmälningsfält *@
+        @if (ReportPostId == post.Id)
+        {
+            <div class="mt-2 ms-2">
+                <InputTextArea class="form-control"
+                               @bind-Value="ReportReason" />
+                <button class="btn btn-danger mt-2"
+                        @onclick="() => SaveReport(post.Id)">
+                    Skicka anmälan
+                </button>
+            </div>
+        }
+
+        @* Meddelandefält *@
+        @if (SelectedMessagePostId == post.Id)
+        {
+            <div class="mt-2 ms-2">
+                <InputTextArea class="form-control"
+                               @bind-Value="MessageText" />
+                <button class="btn btn-primary mt-2"
+                        @onclick="() => SendMessage(SelectedReceiverId)">
+                    Skicka meddelande
+                </button>
+            </div>
+        }
+
+        @* Kommentarer har *@
+        @if (post.Comments != null && post.Comments.Any())
+        {
+            <hr />
+            @foreach (var comment in post.Comments)
+            {
+                <div class="ms-4 mb-1">
+                    <strong>@comment.User?.UserName</strong>
+                    <div>@comment.Text</div>
+                    <small>@comment.CreatedAt.ToString("yyyy-MM-dd ")</small>
+                </div>
+            }
+        }
+    }
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Topic? Topic;
+    private List<Post> Posts = new();
+    private PostModel NewPost = new();
+
+    private int? CommentPostId;
+    private string CommentText = "";
+
+    private int? ReportPostId;
+    private string ReportReason = "";
+
+    private int? SelectedMessagePostId;
+    private string SelectedReceiverId = "";
+    private string MessageText = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        Topic = await TopicService.GetByIdAsync(Id);
+        Posts = await PostService.GetByTopicAsync(Id);
+    }
+
+    private async Task CreatePost()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = await UserManager.GetUserAsync(authState.User);
+        if (user == null) return;
+
+        await PostService.CreatePostAsync(new Post
+        {
+            Text = NewPost.Text,
+            TopicId = Id,
+            UserId = user.Id,
+            CreatedAt = DateTime.UtcNow
+        });
+
+        Posts = await PostService.GetByTopicAsync(Id);
+        NewPost = new();
+    }
+
+    public class PostModel
+    {
+        [Required(ErrorMessage = "Text är obligatoriskt")]
+        public string? Text { get; set; }
+    }
+    //---
+    private void OpenComments(int postId)
+    {
+        CommentPostId = CommentPostId == postId ? null : postId;
+    }
+    
+    private async Task SaveComment(int postId)
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = await UserManager.GetUserAsync(authState.User);
+        if (user == null || string.IsNullOrWhiteSpace(CommentText)) return;
+
+        await CommentService.CreateAsync(new Comment
+        {
+            Text = CommentText,
+            PostId = postId,
+            UserId = user.Id,
+            CreatedAt = DateTime.UtcNow
+        });
+
+        Posts = await PostService.GetByTopicAsync(Id);
+        CommentText = "";
+        CommentPostId = null;
+    }
+    //---
+    private void OpenReport(int postId)
+    {
+        ReportPostId = ReportPostId == postId ? null : postId;
+    }
+
+    private async Task SaveReport(int postId)
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = await UserManager.GetUserAsync(authState.User);
+        if (user == null || string.IsNullOrWhiteSpace(ReportReason)) return;
+
+        await ReportService.CreateAsync(new Report
+        {
+            PostId = postId,
+            UserId = user.Id,
+            Reason = ReportReason,
+            CreatedAt = DateTime.UtcNow
+        });
+
+        ReportReason = "";
+        ReportPostId = null;
+    }
+    //---
+    private void OpenMessage(int postId, string receiverId)
+    {
+        if (SelectedMessagePostId == postId)
+        {
+            SelectedMessagePostId = null;
+            SelectedReceiverId = "";
+        }
+        else
+        {
+            SelectedMessagePostId = postId;
+            SelectedReceiverId = receiverId;
+        }
+        MessageText = "";
+    }
+
+    private async Task SendMessage(string receiverId)
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = await UserManager.GetUserAsync(authState.User);
+        if (user == null || string.IsNullOrWhiteSpace(MessageText)) return;
+
+        await PrivateMessageService.CreateAsync(new PrivateMessage
+        {
+            Text = MessageText,
+            SentAt = DateTime.UtcNow,
+            SenderId = user.Id,
+            ReceiverId = receiverId
+        });
+
+        MessageText = "";
+        SelectedMessagePostId = null;
+        SelectedReceiverId = "";
+    }
+}

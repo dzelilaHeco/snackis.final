@@ -1,0 +1,37 @@
+﻿@page "/category/{Id:int}"
+@using Snackis.Application.Interfaces
+@using Snackis.Domain.Entities
+@inject ITopicService TopicService
+@inject ICategoryService CategoryService
+
+<h1>@category?.Name</h1>
+
+@if (topics == null || !topics.Any())
+{
+    <p>Inga ämnen</p>
+}
+else
+{
+    @foreach (var topic in topics)
+    {
+        <div class="card p-2 mb-2">
+            <a href="@($"/topic/{topic.Id}")">
+                @topic.Name
+            </a>
+        </div>
+    }
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Category? category;
+    private List<Topic> topics = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        category = await CategoryService.GetByIdAsync(Id);
+        topics = await TopicService.GetByCategoryIdAsync(Id);
+    }
+}

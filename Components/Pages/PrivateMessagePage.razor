@@ -1,0 +1,177 @@
+﻿@page "/messages"
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Identity
+@using Snackis.Application.Interfaces
+@using Snackis.Domain.Entities
+@inject IPrivateMessageService PrivateMessageService
+@inject UserManager<MyUser> UserManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@rendermode InteractiveServer
+
+<h3>Mina meddelanden</h3>
+
+<hr />
+
+@if (Threads == null)
+{
+    <p>Laddar...</p>
+}
+else if (!Threads.Any())
+{
+    <p>Inga meddelanden.</p>
+}
+else
+{
+    @foreach (var thread in Threads)
+    {
+        <div class="card p-2 mb-2">
+
+            <strong>@thread.UserName</strong>
+
+            <p>@thread.LastMessage.Text</p>
+
+            <small>
+                @thread.LastMessage.SentAt.ToString("yyyy-MM-dd HH:mm")
+            </small>
+
+            <br />
+
+            <button class="btn btn-sm btn-primary"
+                    @onclick="() => OpenChat(thread.OtherUserId)">
+                Öppna chat
+            </button>
+
+        </div>
+    }
+}
+
+@if (ActiveChatUserId != null)
+{
+    <hr />
+
+    <h4>Chat</h4>
+
+    <div style="max-height:300px; overflow-y:auto; border:1px solid #ccc; padding:10px;">
+        @foreach (var msg in Conversation)
+        {
+            <div class="d-flex mb-2 @(msg.SenderId == CurrentUserId ? "justify-content-end" : "justify-content-start")">
+
+                <div class="p-2 rounded"
+                     style="max-width:60%;
+                            background-color:@(msg.SenderId == CurrentUserId ? "#d1e7dd" : "#f1f1f1");
+                            text-align:@(msg.SenderId == CurrentUserId ? "right" : "left");">
+
+                    <div>
+                        <strong>@msg.Sender?.UserName</strong>
+                    </div>
+
+                    <div>@msg.Text</div>
+
+                    <small>
+                        @msg.SentAt.ToString("yyyy-MM-dd HH:mm")
+                    </small>
+
+                </div>
+            </div>
+        }
+    </div>
+
+    <InputTextArea class="form-control mt-2"
+                   @bind-Value="NewMessage" />
+
+    <button class="btn btn-success mt-2"
+            @onclick="SendMessage">
+        Skicka
+    </button>
+}
+
+@code {
+
+    private string? ActiveChatUserId;
+    private string NewMessage = "";
+
+    private string CurrentUserId;
+
+    private List<PrivateMessage> AllMessages = new();
+    private List<PrivateMessage> Conversation = new();
+    private List<ChatThread> Threads = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = await UserManager.GetUserAsync(authState.User);
+
+        if (user == null)
+            return;
+
+        CurrentUserId = user.Id;
+
+        AllMessages = await PrivateMessageService.GetInboxAsync(user.Id);
+
+        Threads = AllMessages
+            .GroupBy(m => m.SenderId == user.Id ? m.ReceiverId : m.SenderId)
+            .Select(g => new ChatThread
+            {
+                OtherUserId = g.Key,
+                UserName = g.First().SenderId == user.Id
+                    ? g.First().Receiver?.UserName
+                    : g.First().Sender?.UserName,
+                LastMessage = g.OrderByDescending(x => x.SentAt).First()
+            })
+            .ToList();
+    }
+
+    private async Task OpenChat(string otherUserId)
+    {
+        ActiveChatUserId = otherUserId;
+
+        Conversation = await PrivateMessageService.GetConversationAsync(
+            CurrentUserId,
+            ActiveChatUserId
+        );
+    }
+
+    private async Task SendMessage()
+    {
+        if (string.IsNullOrWhiteSpace(NewMessage) || ActiveChatUserId == null)
+            return;
+
+        var message = new PrivateMessage
+        {
+            Text = NewMessage,
+            SenderId = CurrentUserId,
+            ReceiverId = ActiveChatUserId,
+            SentAt = DateTime.UtcNow
+        };
+
+        await PrivateMessageService.CreateAsync(message);
+
+        NewMessage = "";
+
+        Conversation = await PrivateMessageService.GetConversationAsync(
+            CurrentUserId,
+            ActiveChatUserId
+        );
+
+        AllMessages = await PrivateMessageService.GetInboxAsync(CurrentUserId);
+
+        Threads = AllMessages
+            .GroupBy(m => m.SenderId == CurrentUserId ? m.ReceiverId : m.SenderId)
+            .Select(g => new ChatThread
+            {
+                OtherUserId = g.Key,
+                UserName = g.First().SenderId == CurrentUserId
+                    ? g.First().Receiver?.UserName
+                    : g.First().Sender?.UserName,
+                LastMessage = g.OrderByDescending(x => x.SentAt).First()
+            })
+            .ToList();
+    }
+
+    public class ChatThread
+    {
+        public string OtherUserId { get; set; }
+        public string UserName { get; set; }
+        public PrivateMessage LastMessage { get; set; }
+    }
+}
